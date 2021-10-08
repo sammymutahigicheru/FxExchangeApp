@@ -8,3 +8,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Currency Exchange App"
 include ':app'
+include ':internal'
+include ':internal:core'
+include ':internal:data'
+include ':internal:network'
