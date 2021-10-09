@@ -17,7 +17,7 @@ android {
         def versionMinor = 1
         def versionPatch = 2
 
-        applicationId "com.dvt.dvtweatherapp"
+        applicationId "com.dvt.currencyexchangeapp"
         minSdk 21
         targetSdk 31
         versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch //10101 i.e 1.1.1 version

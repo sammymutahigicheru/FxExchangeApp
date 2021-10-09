@@ -1,0 +1,93 @@
+package com.dvt.network.models
+
+
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class Currencies(
+    @Json(name = "BTCUSD")
+    val bTCUSD: String,
+    @Json(name = "USDAED")
+    val uSDAED: String,
+    @Json(name = "USDARS")
+    val uSDARS: String,
+    @Json(name = "USDAUD")
+    val uSDAUD: String,
+    @Json(name = "USDBRL")
+    val uSDBRL: String,
+    @Json(name = "USDCAD")
+    val uSDCAD: String,
+    @Json(name = "USDCHF")
+    val uSDCHF: String,
+    @Json(name = "USDCLP")
+    val uSDCLP: String,
+    @Json(name = "USDCNY")
+    val uSDCNY: String,
+    @Json(name = "USDCOP")
+    val uSDCOP: String,
+    @Json(name = "USDCZK")
+    val uSDCZK: String,
+    @Json(name = "USDDKK")
+    val uSDDKK: String,
+    @Json(name = "USDEUR")
+    val uSDEUR: String,
+    @Json(name = "USDGBP")
+    val uSDGBP: String,
+    @Json(name = "USDHKD")
+    val uSDHKD: String,
+    @Json(name = "USDHRK")
+    val uSDHRK: String,
+    @Json(name = "USDHUF")
+    val uSDHUF: String,
+    @Json(name = "USDIDR")
+    val uSDIDR: String,
+    @Json(name = "USDILS")
+    val uSDILS: String,
+    @Json(name = "USDINR")
+    val uSDINR: String,
+    @Json(name = "USDISK")
+    val uSDISK: String,
+    @Json(name = "USDJPY")
+    val uSDJPY: String,
+    @Json(name = "USDKRW")
+    val uSDKRW: String,
+    @Json(name = "USDKWD")
+    val uSDKWD: String,
+    @Json(name = "USDMAD")
+    val uSDMAD: String,
+    @Json(name = "USDMXN")
+    val uSDMXN: String,
+    @Json(name = "USDMYR")
+    val uSDMYR: String,
+    @Json(name = "USDNOK")
+    val uSDNOK: String,
+    @Json(name = "USDNZD")
+    val uSDNZD: String,
+    @Json(name = "USDPEN")
+    val uSDPEN: String,
+    @Json(name = "USDPHP")
+    val uSDPHP: String,
+    @Json(name = "USDPLN")
+    val uSDPLN: String,
+    @Json(name = "USDRON")
+    val uSDRON: String,
+    @Json(name = "USDRUB")
+    val uSDRUB: String,
+    @Json(name = "USDSEK")
+    val uSDSEK: String,
+    @Json(name = "USDSGD")
+    val uSDSGD: String,
+    @Json(name = "USDTHB")
+    val uSDTHB: String,
+    @Json(name = "USDTRY")
+    val uSDTRY: String,
+    @Json(name = "USDTWD")
+    val uSDTWD: String,
+    @Json(name = "USDXAG")
+    val uSDXAG: String,
+    @Json(name = "USDXAU")
+    val uSDXAU: String,
+    @Json(name = "USDZAR")
+    val uSDZAR: String
+)
