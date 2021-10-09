@@ -1,4 +1,4 @@
-package com.dvt.currencyexchangeapp.repository.curreny_exchange
+package com.dvt.currencyexchangeapp.ui.conversion
 
 import com.dvt.network.models.convert.CurrencyConversionResponse
 import com.dvt.network.network.ApiResponse

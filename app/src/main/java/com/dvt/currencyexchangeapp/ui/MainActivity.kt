@@ -1,4 +1,4 @@
-package com.dvt.currencyexchangeapp
+package com.dvt.currencyexchangeapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.dvt.currencyexchangeapp.repository
+package com.dvt.currencyexchangeapp.ui.currencies.repository
 
 import com.dvt.network.api.ApiService
 import com.dvt.network.models.CurrencyResponse
@@ -9,6 +9,7 @@ class CurrencyRespositoryImpl(
     private val apiService: ApiService
 ) : CurrencyRepository {
     override suspend fun getCurrencies(apiKey: String): ApiResponse<CurrencyResponse> {
+
         return apiCall {
             apiService.getCurrencies(apiKey)
         }

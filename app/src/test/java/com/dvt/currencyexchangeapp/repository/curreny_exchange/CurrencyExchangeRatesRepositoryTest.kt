@@ -1,5 +1,7 @@
 package com.dvt.currencyexchangeapp.repository.curreny_exchange
 
+import com.dvt.currencyexchangeapp.ui.conversion.CurrencyExchangeRatesRepository
+import com.dvt.currencyexchangeapp.ui.conversion.ICurrencyExchangeRatesRepository
 import com.dvt.network.api.ApiService
 import com.dvt.network.helpers.Constants
 import com.dvt.network.helpers.CurrencyExchangeRequestDispatcher

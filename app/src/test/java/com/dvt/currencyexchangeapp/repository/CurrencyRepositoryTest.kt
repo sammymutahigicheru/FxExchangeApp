@@ -1,7 +1,8 @@
 package com.dvt.currencyexchangeapp.repository
 
+import com.dvt.currencyexchangeapp.ui.currencies.repository.CurrencyRepository
+import com.dvt.currencyexchangeapp.ui.currencies.repository.CurrencyRespositoryImpl
 import com.dvt.network.api.ApiService
-import com.dvt.network.helpers.BaseTest
 import com.dvt.network.helpers.Constants
 import com.dvt.network.helpers.CurrencyExchangeRequestDispatcher
 import com.dvt.network.models.CurrencyResponse
@@ -11,9 +12,6 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
 import retrofit2.Retrofit
