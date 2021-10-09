@@ -1,0 +1,10 @@
+{
+  "currencies": {
+    "USDAED": "United Arab Emirates Dirham",
+    "USDARS": "Argentine Peso",
+    "USDAUD": "Australian Dollar",
+    "USDBRL": "Brazilian Real",
+    "BTCUSD": "Bitcoin",
+    "USDZAR": "South African Rand"
+  }
+}
