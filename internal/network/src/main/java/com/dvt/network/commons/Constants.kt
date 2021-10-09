@@ -1,6 +1,5 @@
-package com.dvt.core
+package com.dvt.network.commons
 
 object Constants {
     const val BASE_URL = " https://fxmarketapi.com/"
-    const val API_KEY = "F52x7mlsROfTBvJfBK6Z"
 }

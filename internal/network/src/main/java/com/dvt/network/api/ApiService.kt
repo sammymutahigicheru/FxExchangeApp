@@ -1,4 +1,4 @@
-package com.dvt.network
+package com.dvt.network.api
 
 import com.dvt.network.models.CurrencyResponse
 import com.dvt.network.models.convert.CurrencyConversionResponse
