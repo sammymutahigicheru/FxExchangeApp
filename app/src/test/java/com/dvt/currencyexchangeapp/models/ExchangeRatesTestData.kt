@@ -1,7 +1,6 @@
 package com.dvt.currencyexchangeapp.models
 
 import com.dvt.currencyexchangeapp.utils.ResponseState
-import com.dvt.network.models.convert.CurrencyConversionResponse
 
 val exchangeRatesResponse = CurrencyConversionResponse(
     "EUR",

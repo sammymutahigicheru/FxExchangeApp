@@ -1,13 +1,9 @@
 package com.dvt.currencyexchangeapp.ui.conversion.viewmodel
 
 import app.cash.turbine.test
-import com.dvt.currencyexchangeapp.models.currencyResponseResult
 import com.dvt.currencyexchangeapp.models.exchangeRatesResponse
 import com.dvt.currencyexchangeapp.models.exchangeRatesResult
-import com.dvt.currencyexchangeapp.models.testCurrencyResponse
-import com.dvt.currencyexchangeapp.ui.conversion.ICurrencyExchangeRatesRepository
-import com.dvt.currencyexchangeapp.ui.currencies.repository.CurrencyRepository
-import com.dvt.currencyexchangeapp.ui.currencies.viewmodel.CurrencyViewModel
+import com.dvt.currencyexchangeapp.ui.conversion.repository.ICurrencyExchangeRatesRepository
 import com.dvt.network.helpers.Constants
 import com.dvt.network.network.ApiResponse
 import com.google.common.truth.Truth
@@ -19,7 +15,6 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.junit.jupiter.api.Assertions.*
 import org.spekframework.spek2.Spek
 import kotlin.time.ExperimentalTime
 

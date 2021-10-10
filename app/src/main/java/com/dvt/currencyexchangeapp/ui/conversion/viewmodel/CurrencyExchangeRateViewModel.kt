@@ -2,17 +2,17 @@ package com.dvt.currencyexchangeapp.ui.conversion.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dvt.currencyexchangeapp.ui.conversion.ICurrencyExchangeRatesRepository
+import com.dvt.currencyexchangeapp.ui.conversion.repository.ICurrencyExchangeRatesRepository
 import com.dvt.currencyexchangeapp.utils.ResponseState
-import com.dvt.network.models.convert.CurrencyConversionResponse
 import com.dvt.network.network.ApiResponse
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class CurrencyExchangeRateViewModel(
-    val exchangeRatesRepo:ICurrencyExchangeRatesRepository
+    val exchangeRatesRepo: ICurrencyExchangeRatesRepository
 ):ViewModel() {
     private val _exchangeRates:MutableStateFlow<ResponseState> = MutableStateFlow(
         ResponseState.Loading
@@ -23,7 +23,7 @@ class CurrencyExchangeRateViewModel(
         apiKey:String,
         from:String,
         to:String,
-        amount:String
+        amount:Double
     )  = viewModelScope.launch {
         when(
             val response = exchangeRatesRepo.getCurrencyExchangeRates(

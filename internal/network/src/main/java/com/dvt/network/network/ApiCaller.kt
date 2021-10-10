@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 import java.net.SocketTimeoutException
 
@@ -15,6 +16,7 @@ suspend fun <T> apiCall(
     try {
         ApiResponse.Success(apiCall.invoke())
     } catch (throwable: Throwable) {
+        Timber.e("Throwable: $throwable")
         when (throwable) {
             is IOException -> ApiResponse.DVTError
             is HttpException -> {

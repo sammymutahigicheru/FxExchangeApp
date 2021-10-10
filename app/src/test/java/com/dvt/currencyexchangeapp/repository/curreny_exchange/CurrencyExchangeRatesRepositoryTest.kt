@@ -1,11 +1,10 @@
 package com.dvt.currencyexchangeapp.repository.curreny_exchange
 
-import com.dvt.currencyexchangeapp.ui.conversion.CurrencyExchangeRatesRepository
-import com.dvt.currencyexchangeapp.ui.conversion.ICurrencyExchangeRatesRepository
+import com.dvt.currencyexchangeapp.ui.conversion.repository.CurrencyExchangeRatesRepository
+import com.dvt.currencyexchangeapp.ui.conversion.repository.ICurrencyExchangeRatesRepository
 import com.dvt.network.api.ApiService
 import com.dvt.network.helpers.Constants
 import com.dvt.network.helpers.CurrencyExchangeRequestDispatcher
-import com.dvt.network.models.convert.CurrencyConversionResponse
 import com.dvt.network.network.ApiResponse
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
