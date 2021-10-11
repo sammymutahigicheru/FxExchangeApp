@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/drawable/circular_textview.xml" value="0.2324074074074074" />
         <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/content_home.xml" value="0.1" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/currency_row_item_layout.xml" value="0.2203125" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/exchange_rates_list_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/fragment_currencies.xml" value="0.22447916666666667" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/fragment_exchange_rates.xml" value="0.22037037037037038" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/fragment_home_list.xml" value="0.1" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/layout/list_item.xml" value="0.2203125" />
+        <entry key="..\:/CurrencyExchangeApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2203125" />
       </map>
     </option>
   </component>

@@ -1,6 +1,7 @@
 package com.dvt.currencyexchangeapp
 
 import android.app.Application
+import com.dvt.currencyexchangeapp.di.appModules
 import com.dvt.network.di.networkModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -10,7 +11,7 @@ import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import timber.log.Timber
 
-class CurrencyExchange:Application() {
+class CurrencyExchange : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
@@ -24,6 +25,7 @@ class CurrencyExchange:Application() {
                 androidContext(applicationContext)
                 val modules = mutableListOf<Module>().apply {
                     addAll(networkModules)
+                    addAll(appModules)
                 }
                 modules(modules)
             }

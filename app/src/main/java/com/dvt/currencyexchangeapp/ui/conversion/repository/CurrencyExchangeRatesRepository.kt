@@ -1,7 +1,6 @@
-package com.dvt.currencyexchangeapp.repository.curreny_exchange
+package com.dvt.currencyexchangeapp.ui.conversion.repository
 
 import com.dvt.network.api.ApiService
-import com.dvt.network.models.convert.CurrencyConversionResponse
 import com.dvt.network.network.ApiResponse
 import com.dvt.network.network.apiCall
 
@@ -13,8 +12,8 @@ class CurrencyExchangeRatesRepository(
         apiKey: String,
         from: String,
         to: String,
-        amount: String
-    ): ApiResponse<CurrencyConversionResponse> {
+        amount: Double
+    ): ApiResponse<com.dvt.network.models.convert.ConversionResponse> {
         return apiCall {
             apiService.convert(apiKey, from, to, amount)
         }
