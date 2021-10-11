@@ -17,6 +17,7 @@ import com.dvt.currencyexchangeapp.databinding.FragmentExchangeRatesBinding
 import com.dvt.currencyexchangeapp.ui.conversion.viewmodel.CurrencyExchangeRateViewModel
 import com.dvt.currencyexchangeapp.utils.ResponseState
 import com.dvt.network.models.convert.ConversionResponse
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -32,6 +33,8 @@ class ExchangeRatesFragment : Fragment() {
     private var from: String? = ""
     private var to: String? = ""
 
+    private lateinit var progressDialog: MaterialAlertDialogBuilder
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +45,9 @@ class ExchangeRatesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressDialog = MaterialAlertDialogBuilder(binding.root.context).apply {
+            setCancelable(false)
+        }
         val countries = getAllCountries()
         setUpView(countries)
         initListeners()
@@ -70,18 +76,22 @@ class ExchangeRatesFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+        val progressDialog = progressDialog.create()
         lifecycleScope.launchWhenStarted {
             viewModel.exchangeRates.collect { responseState ->
                 when (responseState) {
                     is ResponseState.Loading -> {
-
+                        progressDialog.setMessage("converting...")
+                        progressDialog.show()
                     }
                     is ResponseState.Result<*> -> {
+                        progressDialog.dismiss()
                         val response = responseState.data as ConversionResponse
                         Timber.e("Response: $response")
                         setUpResultView(response)
                     }
                     is ResponseState.Error -> {
+                        progressDialog.dismiss()
                         val error = responseState.message
                         Timber.e("Error: $error")
                     }
@@ -92,16 +102,17 @@ class ExchangeRatesFragment : Fragment() {
 
     private fun setUpResultView(response: ConversionResponse) {
         binding.apply {
-            resultLayout.visibility = VISIBLE
+            resultCardView.visibility = VISIBLE
             val rates = response.rates
-            var amount:Double = 0.0
+            var amount: Double = 0.0
             var currencyName = ""
             rates.keys.forEach {
                 currencyName = rates[it]?.currency_name.toString()
                 amount = rates[it]?.rate_for_amount!!
             }
-            currencyText.text = currencyName
-            currencyResultText.text = amount.toString()
+            convertedToCurrencyName.text =
+                "The Current Fx Rate From ${response.base_currency_name} To $currencyName"
+            currencyRate.text = "Fx Rate Buying And Selling: $amount"
 
         }
     }

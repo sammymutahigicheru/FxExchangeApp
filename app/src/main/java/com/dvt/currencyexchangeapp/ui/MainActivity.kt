@@ -1,16 +1,16 @@
 package com.dvt.currencyexchangeapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.dvt.core.helpers.changeActivityStatusBarColor
 import com.dvt.currencyexchangeapp.R
 import com.dvt.currencyexchangeapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding:ActivityMainBinding by lazy {
+    private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        changeActivityStatusBarColor(this)
 
         val navHostFrag =
             supportFragmentManager.findFragmentById(R.id.home_nav_host_fragment) as NavHostFragment
