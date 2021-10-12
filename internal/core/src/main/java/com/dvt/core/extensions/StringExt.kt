@@ -1,5 +1,6 @@
 package com.dvt.core.extensions
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 fun String.getInitials(): String {
@@ -26,4 +27,17 @@ fun String.capitaliseName(): String {
     }
 
     return ("$first $last")
+}
+fun String.convertToMonthDay(): String {
+    //30-05-2021
+
+    val epoch: Long
+
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+    epoch = dateFormat.parse(this).time
+
+    val newFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+
+    return newFormat.format(Date(epoch))
 }

@@ -139,9 +139,8 @@ dependencies {
     //Threading
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
-    implementation("com.google.android.gms:play-services-auth:19.2.0")
-    implementation("com.google.android.gms:play-services-auth-api-phone:17.5.1")
-    implementation("com.google.android.gms:play-services-location:18.0.0")
+    //charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 
     //TEST

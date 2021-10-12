@@ -3,7 +3,9 @@ package com.dvt.network.api
 import com.dvt.network.models.CurrencyResponse
 import com.dvt.network.models.convert.ConversionResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
+import java.util.*
 
 interface ApiService {
 
@@ -20,12 +22,9 @@ interface ApiService {
         @Query("amount") amount: Double
     ): ConversionResponse
 
-    @GET("apitimeseries")
+    @GET("historical/{date}")
     suspend fun historicalExchangeRates(
-        @Query("api_key") apiKey: String,
-        @Query("currency") from: String,
-        @Query("start_date") to: String,
-        @Query("end_date") amount: String,
-        @Query("format") format: String = "ohlc"
-    )
+        @Path("date") date:String,
+        @Query("api_key") apiKey: String
+    ):ConversionResponse
 }
