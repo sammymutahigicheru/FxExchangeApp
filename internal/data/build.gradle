@@ -38,9 +38,10 @@ dependencies {
     kapt("androidx.room:room-compiler:2.3.0")
     implementation("androidx.room:room-ktx:2.3.0")
 
-    //di
-    implementation("org.koin:koin-android:2.1.5")
-    implementation("org.koin:koin-android-scope:2.1.5")
+    //DI
+    implementation("io.insert-koin:koin-android:3.1.2")
+    // Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:3.1.2"
 
     //Threading
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")

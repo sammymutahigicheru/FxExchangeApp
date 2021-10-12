@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id("de.mannodermaus.android-junit5")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id 'jacoco'
     id("io.gitlab.arturbosch.detekt")
 }
@@ -129,18 +128,13 @@ dependencies {
     implementation('com.jakewharton.timber:timber:5.0.1')
 
     //DI
-    implementation("org.koin:koin-android:2.1.5")
-    implementation("org.koin:koin-android-scope:2.1.5")
-    implementation("org.koin:koin-androidx-viewmodel:2.1.5")
-
-    //Dexter
-    implementation("com.karumi:dexter:6.2.3")
+    implementation("io.insert-koin:koin-android:3.1.2")
+    // Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:3.1.2"
 
     //viewpager2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
-    //GOOGLE MAPS
-    implementation("com.google.android.gms:play-services-maps:17.0.1")
 
     //Threading
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
@@ -149,8 +143,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth-api-phone:17.5.1")
     implementation("com.google.android.gms:play-services-location:18.0.0")
 
-    //palette
-    implementation 'androidx.palette:palette-ktx:1.0.0'
 
     //TEST
     testImplementation 'junit:junit:4.13.2'
@@ -162,7 +154,7 @@ dependencies {
     testImplementation("androidx.test:rules:1.4.0")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
-    testImplementation("org.koin:koin-test:2.1.5")
+    testImplementation "io.insert-koin:koin-test-junit5:3.1.2"
     testImplementation("com.squareup.okhttp3:mockwebserver:5.0.0-alpha.2")
     // test kotlinx.coroutines Flow
     testImplementation("app.cash.turbine:turbine:0.6.0")
@@ -202,7 +194,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
     androidTestImplementation("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
-    androidTestImplementation("org.koin:koin-test:2.1.5")
+    androidTestImplementation("io.insert-koin:koin-test-junit5:3.1.2")
     implementation("androidx.test.espresso:espresso-idling-resource:3.4.0")
 
 }

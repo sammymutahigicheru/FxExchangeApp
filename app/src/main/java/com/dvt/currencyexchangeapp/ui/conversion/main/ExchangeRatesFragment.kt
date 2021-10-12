@@ -1,5 +1,6 @@
 package com.dvt.currencyexchangeapp.ui.conversion.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -100,6 +101,7 @@ class ExchangeRatesFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setUpResultView(response: ConversionResponse) {
         binding.apply {
             resultCardView.visibility = VISIBLE
@@ -110,9 +112,7 @@ class ExchangeRatesFragment : Fragment() {
                 currencyName = rates[it]?.currency_name.toString()
                 amount = rates[it]?.rate_for_amount!!
             }
-            convertedToCurrencyName.text =
-                "The Current Fx Rate From ${response.base_currency_name} To $currencyName"
-            currencyRate.text = "Fx Rate Buying And Selling: $amount"
+            resultRate.text = "$currencyName $amount"
 
         }
     }
@@ -129,12 +129,14 @@ class ExchangeRatesFragment : Fragment() {
                 val country = fromText.text.toString()
                 val countryCode = getCountryCode(countryName = country)
                 from = getCountryCurrency(countryCode = countryCode)
+                currencyFromValue.text = from
                 Timber.e("To Currency: $from")
             }
             toText.setOnItemClickListener { _, _, _, _ ->
                 val country = toText.text.toString()
                 val countryCode = getCountryCode(countryName = country)
                 to = getCountryCurrency(countryCode = countryCode)
+                currencyToValue.text = to
                 Timber.e("To Currency: $to")
             }
         }
