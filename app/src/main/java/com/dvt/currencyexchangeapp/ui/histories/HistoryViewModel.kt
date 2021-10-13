@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dvt.currencyexchangeapp.utils.ResponseState
 import com.dvt.network.network.ApiResponse
+import com.sammy.data.entity.RatesEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -40,4 +42,10 @@ class HistoryViewModel(
             }
         }
     }
+
+    fun saveRates(rates: List<RatesEntity>) = viewModelScope.launch(Dispatchers.IO) {
+        historiesRepository.saveRates(rates)
+    }
+
+    suspend fun fetchHistoricalRates() = historiesRepository.fetchAllCurrencyRates()
 }

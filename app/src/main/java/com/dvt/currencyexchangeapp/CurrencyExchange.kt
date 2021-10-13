@@ -3,6 +3,7 @@ package com.dvt.currencyexchangeapp
 import android.app.Application
 import com.dvt.currencyexchangeapp.di.appModules
 import com.dvt.network.di.networkModules
+import com.sammy.data.di.dataModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -26,6 +27,7 @@ class CurrencyExchange : Application() {
                 val modules = mutableListOf<Module>().apply {
                     addAll(networkModules)
                     addAll(appModules)
+                    addAll(dataModules)
                 }
                 modules(modules)
             }

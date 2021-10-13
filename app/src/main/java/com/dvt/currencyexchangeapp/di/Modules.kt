@@ -16,7 +16,7 @@ import org.koin.dsl.module
 private val repositoryModule: Module = module {
     single<CurrencyRepository> { CurrencyRespositoryImpl(get()) }
     single<ICurrencyExchangeRatesRepository> { CurrencyExchangeRatesRepository(get()) }
-    single<IHistoriesRepository> { HistoriesRepository(get()) }
+    single<IHistoriesRepository> { HistoriesRepository(get(),get()) }
 }
 
 private val viewModelModule: Module = module {
