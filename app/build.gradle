@@ -142,6 +142,9 @@ dependencies {
     //charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    //workmanager
+    implementation "androidx.work:work-runtime-ktx:2.6.0"
+
 
     //TEST
     testImplementation 'junit:junit:4.13.2'

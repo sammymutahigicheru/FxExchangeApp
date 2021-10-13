@@ -47,5 +47,7 @@ class HistoryViewModel(
         historiesRepository.saveRates(rates)
     }
 
+    fun getRepositoryInstance() = historiesRepository
+
     suspend fun fetchHistoricalRates() = historiesRepository.fetchAllCurrencyRates()
 }
