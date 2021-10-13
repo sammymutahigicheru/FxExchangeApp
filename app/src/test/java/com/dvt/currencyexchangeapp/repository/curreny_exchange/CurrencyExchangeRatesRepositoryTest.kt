@@ -5,6 +5,7 @@ import com.dvt.currencyexchangeapp.ui.conversion.repository.ICurrencyExchangeRat
 import com.dvt.network.api.ApiService
 import com.dvt.network.helpers.Constants
 import com.dvt.network.helpers.CurrencyExchangeRequestDispatcher
+import com.dvt.network.models.convert.ConversionResponse
 import com.dvt.network.network.ApiResponse
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
@@ -28,7 +29,7 @@ class CurrencyExchangeRatesRepositoryTest : Spek({
 
     lateinit var currencyExchangeRatesRepository: ICurrencyExchangeRatesRepository
 
-    lateinit var result: ApiResponse<CurrencyConversionResponse>
+    lateinit var result: ApiResponse<ConversionResponse>
 
     Feature("Fetching Weather Reports from API") {
         beforeEachScenario {
@@ -71,9 +72,9 @@ class CurrencyExchangeRatesRepositoryTest : Spek({
             Then("Given right query params get correct conversion rates") {
                 when (result) {
                     is ApiResponse.Success -> {
-                        val data: CurrencyConversionResponse =
-                            (result as ApiResponse.Success<CurrencyConversionResponse>).data
-                        Truth.assertThat(data.price).isEqualTo(10.11725)
+                        val data: ConversionResponse =
+                            (result as ApiResponse.Success<ConversionResponse>).data
+                        Truth.assertThat(data.amount).isEqualTo(10.0000)
                     }
                     else -> {
                     }

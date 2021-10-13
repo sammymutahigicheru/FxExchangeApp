@@ -1,7 +1,14 @@
 {
-  "from": "EUR",
-  "price": 10.11725,
-  "timestamp": 1633767842,
-  "to": "SEK",
-  "total": 10117.25
+  "base_currency_code": "EUR",
+  "base_currency_name": "Euro",
+  "amount": "10.0000",
+  "updated_date": "2021-10-13",
+  "rates": {
+    "GBP": {
+      "currency_name": "Pound sterling",
+      "rate": "0.8489",
+      "rate_for_amount": "8.4888"
+    }
+  },
+  "status": "success"
 }

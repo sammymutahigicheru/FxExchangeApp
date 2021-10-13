@@ -1,10 +1,14 @@
 {
-  "currencies": {
-    "USDAED": "United Arab Emirates Dirham",
-    "USDARS": "Argentine Peso",
-    "USDAUD": "Australian Dollar",
-    "USDBRL": "Brazilian Real",
-    "BTCUSD": "Bitcoin",
-    "USDZAR": "South African Rand"
-  }
+  "base_currency_code": "EUR",
+  "base_currency_name": "Euro",
+  "amount": "10.0000",
+  "updated_date": "2021-10-13",
+  "rates": {
+    "GBP": {
+      "currency_name": "Pound sterling",
+      "rate": "0.8489",
+      "rate_for_amount": "8.4888"
+    }
+  },
+  "status": "success"
 }

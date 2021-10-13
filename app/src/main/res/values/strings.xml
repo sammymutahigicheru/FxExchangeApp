@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Currency Exchange App</string>
+    <string name="currency_exchange">Currency Exchange</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="amount">Amount</string>
+    <string name="convert">Convert</string>
+    <string name="current_fx_rate_for_buying_and_selling">Current FX Rate For Buying And Selling:</string>
+    <string name="weeks_for_current_month">Weeks For Current Month</string>
 
     <string-array name="months_array">
         <item>January</item>

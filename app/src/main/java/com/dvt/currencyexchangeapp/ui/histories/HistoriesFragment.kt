@@ -106,7 +106,7 @@ class HistoriesFragment : Fragment() {
         binding.weekGroup.removeAllViews()
 
         addChips(weeks)
-
+        Timber.e("Time: ${calendar.time.time}")
         val firstDay = convertTimeStamp(calendar.time.time)
         calendar.add(Calendar.DAY_OF_MONTH, 1)
         val lastDay = convertTimeStamp(calendar.time.time)

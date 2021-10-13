@@ -12,12 +12,12 @@ internal class CurrencyExchangeRequestDispatcher : Dispatcher() {
 
     override fun dispatch(request: RecordedRequest): MockResponse {
         return when (request.path) {
-            "/apicurrencies?api_key=F52x7mlsROfTBvJfBK6Z" -> {
+            "/convert?api_key=9f6394ec58802eb6f2f6195737ba5d1129d97b55" -> {
                 MockResponse()
                     .setResponseCode(HttpURLConnection.HTTP_OK)
                     .setBody(com.dvt.currencyexchangeapp.helpers.getJson("json/currency.json"))
             }
-            "/apiconvert?${Constants.CURRENCY_EXCHANGE_PARAMS}" -> {
+            "/historical?${Constants.CURRENCY_EXCHANGE_PARAMS}" -> {
                 MockResponse()
                     .setResponseCode(HttpURLConnection.HTTP_OK)
                     .setBody(
