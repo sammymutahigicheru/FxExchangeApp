@@ -10,11 +10,9 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.dvt.core.Constants
-import com.dvt.core.extensions.showErrorSnackbar
 import com.dvt.core.helpers.getAllCountries
 import com.dvt.core.helpers.getCountryCode
 import com.dvt.core.helpers.getCountryCurrency
-import com.dvt.core.helpers.isOnline
 import com.dvt.currencyexchangeapp.R
 import com.dvt.currencyexchangeapp.databinding.FragmentExchangeRatesBinding
 import com.dvt.currencyexchangeapp.ui.conversion.viewmodel.CurrencyExchangeRateViewModel
@@ -53,12 +51,7 @@ class ExchangeRatesFragment : Fragment() {
         }
         val countries = getAllCountries()
         setUpView(countries)
-
-        if (!isOnline(binding.root.context)) {
-            binding.root.showErrorSnackbar("Turn on your internet!!")
-        } else {
-            initListeners()
-        }
+        initListeners()
     }
 
     private fun initListeners() {
@@ -102,7 +95,6 @@ class ExchangeRatesFragment : Fragment() {
                         progressDialog.dismiss()
                         val error = responseState.message
                         Timber.e("Error: $error")
-                        binding.root.showErrorSnackbar(error)
                     }
                 }
             }

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.work.*
 import com.dvt.core.Constants
 import com.dvt.core.extensions.convertToMonthDay
 import com.dvt.core.helpers.convertTimeStamp
@@ -20,6 +21,7 @@ import com.dvt.core.mappers.toRatesEntity
 import com.dvt.currencyexchangeapp.R
 import com.dvt.currencyexchangeapp.databinding.FragmentHistoriesBinding
 import com.dvt.currencyexchangeapp.model.Rates
+import com.dvt.currencyexchangeapp.ui.histories.workmanager.UploadRatesWorker
 import com.dvt.currencyexchangeapp.utils.ResponseState
 import com.dvt.currencyexchangeapp.utils.mappers.toRate
 import com.dvt.currencyexchangeapp.utils.mappers.toRates
@@ -36,12 +38,16 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.Utils
 import com.google.android.material.chip.Chip
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
+import com.sammy.data.entity.RatesEntity
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class HistoriesFragment : Fragment() {
@@ -244,6 +250,28 @@ class HistoriesFragment : Fragment() {
     }
 
     private fun saveRates(result: ConversionResponse) {
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        val gson:Gson = Gson()
+        val ratesString = gson.toJson(result.toRatesEntity())
+
+
+        val ratesData = workDataOf(Constants.UPLOAD_KEY to ratesString)
+
+        val uploadWorkRequest = OneTimeWorkRequestBuilder<UploadRatesWorker>()
+            .setInputData(ratesData)
+            .setConstraints(constraints)
+            .setBackoffCriteria(
+                BackoffPolicy.LINEAR,
+                OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
+                TimeUnit.MILLISECONDS)
+            .build()
+
+        WorkManager.getInstance().enqueue(uploadWorkRequest)
+
+        //just incase workmanager fails
         viewModel.saveRates(result.toRatesEntity())
     }
 
@@ -350,7 +378,6 @@ class HistoriesFragment : Fragment() {
     }
 
     private fun setData(result: List<Rates>) {
-        Timber.e("Converted Rates: $result")
         val set1: LineDataSet
         val values: ArrayList<Entry> = ArrayList()
         for (item in result) {
