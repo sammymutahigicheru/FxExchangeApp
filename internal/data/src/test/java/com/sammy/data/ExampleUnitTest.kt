@@ -1,4 +1,4 @@
-package com.dvt.data
+package com.sammy.data
 
 import org.junit.Test
 

@@ -15,9 +15,14 @@ import androidx.lifecycle.lifecycleScope
 import com.dvt.core.Constants
 import com.dvt.core.extensions.convertToMonthDay
 import com.dvt.core.helpers.convertTimeStamp
+import com.dvt.core.helpers.isOnline
+import com.dvt.core.mappers.toRatesEntity
 import com.dvt.currencyexchangeapp.R
 import com.dvt.currencyexchangeapp.databinding.FragmentHistoriesBinding
+import com.dvt.currencyexchangeapp.model.Rates
 import com.dvt.currencyexchangeapp.utils.ResponseState
+import com.dvt.currencyexchangeapp.utils.mappers.toRate
+import com.dvt.currencyexchangeapp.utils.mappers.toRates
 import com.dvt.network.models.convert.ConversionResponse
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.Legend.LegendForm
@@ -57,11 +62,28 @@ class HistoriesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         progressDialog = MaterialAlertDialogBuilder(binding.root.context).apply {
             setCancelable(false)
         }
-        getHistoricalExchangeRatesForCurrentMonth()
-        observeViewModel()
+
+        val isNetworkAvailable = isOnline(binding.root.context)
+
+        if (isNetworkAvailable){
+            getHistoricalExchangeRatesForCurrentMonth()
+            observeViewModel()
+        }else{
+            fetchHistoricalRatesFromDb()
+        }
+    }
+
+    private fun fetchHistoricalRatesFromDb() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.fetchHistoricalRates().collect { rates ->
+                Timber.e("Historical Rates: $rates")
+                setupChart(rates.toRate())
+            }
+        }
     }
 
     private fun getHistoricalExchangeRatesForCurrentMonth() {
@@ -208,7 +230,8 @@ class HistoriesFragment : Fragment() {
                     is ResponseState.Result<*> -> {
                         progress.hide()
                         val result = responseState.data as ConversionResponse
-                        setupChart(result)
+                        saveRates(result)
+                        setupChart(result.toRates())
                     }
                     is ResponseState.Error -> {
                         progress.hide()
@@ -220,7 +243,11 @@ class HistoriesFragment : Fragment() {
         }
     }
 
-    private fun setupChart(result: ConversionResponse) {
+    private fun saveRates(result: ConversionResponse) {
+        viewModel.saveRates(result.toRatesEntity())
+    }
+
+    private fun setupChart(result: List<Rates>) {
 
         binding.lineChart.apply {
             // background color
@@ -322,15 +349,12 @@ class HistoriesFragment : Fragment() {
         }
     }
 
-    private fun setData(result: ConversionResponse) {
+    private fun setData(result: List<Rates>) {
+        Timber.e("Converted Rates: $result")
         val set1: LineDataSet
         val values: ArrayList<Entry> = ArrayList()
-        val rates = result.rates
-        var count: Int = 1
-        for (key in result.rates.keys) {
-            val rate = rates[key]?.rate
-            values.add(Entry((count).toFloat(), rate?.toFloat()!!))
-            count++;
+        for (item in result) {
+            values.add(Entry(item.id.toFloat(), item.rates.toFloat()))
         }
 
         if (binding.lineChart.data != null &&
