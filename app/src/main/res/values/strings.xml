@@ -7,6 +7,7 @@
     <string name="convert">Convert</string>
     <string name="current_fx_rate_for_buying_and_selling">Current FX Rate For Buying And Selling:</string>
     <string name="weeks_for_current_month">Weeks For Current Month</string>
+    <string name="_network">Turn On your internet connection</string>
 
     <string-array name="months_array">
         <item>January</item>

@@ -13,3 +13,7 @@ fun View.showErrorSnackbar(message: String) {
         show()
     }
 }
+
+fun View.show(){
+    visibility = View.VISIBLE
+}

@@ -2,17 +2,23 @@ package com.dvt.currencyexchangeapp.ui.conversion.main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.dvt.core.Constants
+import com.dvt.core.extensions.show
+import com.dvt.core.extensions.showErrorSnackbar
 import com.dvt.core.helpers.getAllCountries
 import com.dvt.core.helpers.getCountryCode
 import com.dvt.core.helpers.getCountryCurrency
+import com.dvt.core.helpers.isOnline
 import com.dvt.currencyexchangeapp.R
 import com.dvt.currencyexchangeapp.databinding.FragmentExchangeRatesBinding
 import com.dvt.currencyexchangeapp.ui.conversion.viewmodel.CurrencyExchangeRateViewModel
@@ -51,7 +57,13 @@ class ExchangeRatesFragment : Fragment() {
         }
         val countries = getAllCountries()
         setUpView(countries)
-        initListeners()
+
+        if (isOnline(binding.root.context)){
+            binding.amoutText.addTextChangedListener(textWatcher)
+            initListeners()
+        }else{
+            binding.root.showErrorSnackbar(getString(R.string._network))
+        }
     }
 
     private fun initListeners() {
@@ -95,6 +107,7 @@ class ExchangeRatesFragment : Fragment() {
                         progressDialog.dismiss()
                         val error = responseState.message
                         Timber.e("Error: $error")
+                        binding.root.showErrorSnackbar(error)
                     }
                 }
             }
@@ -104,7 +117,7 @@ class ExchangeRatesFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setUpResultView(response: ConversionResponse) {
         binding.apply {
-            resultCardView.visibility = VISIBLE
+            resultCardView.show()
             val rates = response.rates
             var amount: Double = 0.0
             var currencyName = ""
@@ -140,6 +153,26 @@ class ExchangeRatesFragment : Fragment() {
                 Timber.e("To Currency: $to")
             }
         }
+    }
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            s?.let { text ->
+                if (text.isNotEmpty()) {
+                    if (binding.amountLayout.isErrorEnabled) {
+                        binding.amountLayout.isErrorEnabled= false
+                    }
+                }
+            }
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+        }
+
     }
 
 }
