@@ -1,7 +1,7 @@
 package com.dvt.network.helpers
 
 object Constants {
-    const val API_KEY = "9f6394ec58802eb6f2f6195737ba5d1129d97b55"
+    const val API_KEY = ""
     const val FROM = "EUR"
     const val TO = "SEK"
     const val AMOUNT = 1.0
