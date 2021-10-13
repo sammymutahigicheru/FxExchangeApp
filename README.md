@@ -53,4 +53,4 @@ I added some screenshots in the `screenshots` folder, in the root directory of t
 
 Currency Conversion | Currency Conversion result | Histories
 --- | --- | ---
-<img src="https://github.com/sammymutahigicheru/FxExchangeApp/blob/main/screenshots/currency_page.jpg" width="280"/> | <img src="https://github.com/sammymutahigicheru/FxExchangeApp/blob/main/screenshots/currency_page1.jpg" width="280"/> | <img src="https://github.com/sammymutahigicheru/FxExchangeApp/blob/main/screenshots/histories_page.jpg" width="280"/>
+<img src="https://github.com/sammymutahigicheru/FxExchangeApp/blob/main/screenshots/currency%20page.jpg" width="280"/> | <img src="https://github.com/sammymutahigicheru/FxExchangeApp/blob/main/screenshots/currency%20page%201.jpg" width="280"/> | <img src="https://github.com/sammymutahigicheru/FxExchangeApp/blob/main/screenshots/histories%20page.jpg" width="280"/>
