@@ -14,5 +14,5 @@ interface IHistoriesRepository {
 
     suspend fun fetchAllCurrencyRates():Flow<List<RatesEntity>>
 
-    suspend fun saveRates(rates: List<RatesEntity>)
+    fun saveRates(rates: List<RatesEntity>)
 }

@@ -29,7 +29,7 @@ class HistoriesRepository(
         return ratesDao.historicalRates()
     }
 
-    override suspend fun saveRates(rates: List<RatesEntity>) {
+    override fun saveRates(rates: List<RatesEntity>) {
         ratesDao.insert(rates)
     }
 
