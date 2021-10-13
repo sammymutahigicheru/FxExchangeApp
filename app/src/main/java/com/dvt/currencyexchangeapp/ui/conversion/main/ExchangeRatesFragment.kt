@@ -112,7 +112,7 @@ class ExchangeRatesFragment : Fragment() {
                 currencyName = rates[it]?.currency_name.toString()
                 amount = rates[it]?.rate_for_amount!!
             }
-            resultRate.text = "$currencyName $amount"
+            resultRate.text = "$amount"
 
         }
     }
