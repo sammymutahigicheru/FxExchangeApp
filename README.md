@@ -1,6 +1,6 @@
 [![Android CI](https://github.com/sammymutahigicheru/FxExchangeApp/actions/workflows/main.yml/badge.svg)](https://github.com/sammymutahigicheru/FxExchangeApp/actions/workflows/main.yml)
 
-Writing DTV Currency Converter App using [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/), in 100% Kotlin :rocket:
+Writing Currency Converter App using [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/), in 100% Kotlin :rocket:
 
 
 ### Unit Tests
