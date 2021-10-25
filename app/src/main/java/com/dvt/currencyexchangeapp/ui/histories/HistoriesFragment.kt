@@ -272,7 +272,7 @@ class HistoriesFragment : Fragment() {
         WorkManager.getInstance().enqueue(uploadWorkRequest)
 
         //just incase workmanager fails
-        viewModel.saveRates(result.toRatesEntity())
+       // viewModel.saveRates(result.toRatesEntity())
     }
 
     private fun setupChart(result: List<Rates>) {

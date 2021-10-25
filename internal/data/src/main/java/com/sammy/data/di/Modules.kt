@@ -7,6 +7,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 private val databaseModule: Module = module {
+
     single {
         Room.databaseBuilder(
             androidContext(),
@@ -16,6 +17,7 @@ private val databaseModule: Module = module {
             .fallbackToDestructiveMigration()
             .build()
     }
+
 }
 
 private val daoModule: Module = module {
